@@ -104,9 +104,28 @@
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">FORGE</h2>
+      <div class="figure-block">
+        <img src="static/images/overview.jpg" alt="Overview of FORGE and ontology-verified reasoning post-training" loading="lazy">
+        <p class="figure-caption">Overview of FORGE: (a) compositional reasoning over mechanical drawings, (b) ontology-grounded benchmark construction, and (c) ontology-verified reasoning post-training.</p>
+      </div>
       <div class="content has-text-justified">
         <p>
           FORGE is built around a typed drawing ontology that links benchmark construction and post-training. From Fusion 360 Gallery CAD assemblies, we instantiate an assembly-specific ontology graph of components, features, dimensions and BOM entries, and generate single-sheet drawings in SolidWorks so that every relation in the graph is visually observable. Questions are then derived deterministically from question-conditioned subgraphs, yielding canonical answers and symbolic reasoning traces organized into Standard, Compositional and Hard settings. The same ontology supervises post-training: an ontology verifier tracks the reasoning state, <b>ORSD</b> distills the next required ontology operation from non-terminal states, <b>VTC-SD</b> distills a clean closure once the requested entity is resolved, and a lightweight <b>GCTH</b> learns when to stop reasoning without any ontology access at inference.
+        </p>
+      </div>
+
+    </div>
+  </section>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="figure-block">
+        <img src="static/images/table1.png" alt="Main results on FORGE across open-source MLLMs and the post-trained 4B model" loading="lazy">
+        <p class="figure-caption">Accuracy (%) on the FORGE test set. C1&ndash;C4 denote the four Hard compositional reasoning families.</p>
+      </div>
+      <div class="content has-text-justified">
+        <p>
+          Open-source MLLMs handle Standard questions reasonably well but drop sharply on the held-out Hard split; the best, MiniCPM-V-4.5, reaches only 39.33%, and scaling Qwen3-VL-Thinking to 32B does not help. Starting from Standard-only SFT, our ontology-verified post-training raises Hard accuracy from 37.45% to 70.41% while keeping Standard accuracy at 92.94%, giving the best overall accuracy of 90.74%. Gains are largest on C1&ndash;C3, while the longest family, C4, remains unsolved.
         </p>
       </div>
 
